@@ -1,0 +1,110 @@
+#+title: SICP
+#+property: header-args :lang sicp
+#+property: header-args :session *SICP REPL*
+
+* Ch. 1.1.6
+** Ex. 1.1
+
+#+begin_src scheme
+10
+;; => 10
+
+(+ 5 3 4)
+;; => 12
+
+(- 9 1)
+;; => 8
+
+(/ 6 2)
+;; => 3
+
+(+ (* 2 4) (- 4 6))
+;; => 6
+
+(define a 3)
+;; => a
+
+(define b (+ a 1))
+;; => b
+
+(+ a b (* a b))
+;; => 19
+
+(= a b)
+;; => #f
+
+(if (and (> b a) (< b (* a b)))
+    b
+    a)
+;; => 4
+
+(cond ((= a 4) 6)
+      ((= b 4) (+ 6 7 a))
+      (else 25))
+;; => 16
+
+(+ 2 (if (> b a) b a))
+;; => 6
+
+(* (cond ((> a b) a)
+         ((< a b) b)
+         (else -1))
+   (+ a 1))
+;; => 16
+#+end_src
+
+** Ex. 1.2
+
+#+begin_src scheme
+(define prefix-expression
+  (/ (+ 5 4 (- 2 (- 3 (+ 6 4/5))))
+          (* 3 (- 6 2) (- 2 7))))
+
+(* 1.0 prefix-expression)
+#+end_src
+
+#+RESULTS:
+: -0.24666666666666667
+
+Via calculator
+(5 + 4 + (2 - (3 - (6 + 4/5)))) / (3(6 - 2)(2 - 7)) = -0.24666666666
+
+** Ex. 1.3
+
+#+begin_src scheme
+(define (sum-of-squares-of-larger-two x y z)
+  (cond ((< x y) ))
+  )
+#+end_src
+
+* Square roots by Newton's method
+
+#+begin_src scheme :results none
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (square x)
+  (* x x))
+
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+#+end_src
+
+#+begin_src scheme
+(sqrt 1000)
+#+end_src
+
+#+RESULTS:
+: 31.622782450701045
