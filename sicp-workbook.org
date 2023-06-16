@@ -1,9 +1,5 @@
 #+title: SICP Workbook
-#+property: header-args :lang sicp
-#+property: header-args :session *SICP REPL*
-
-#+latex_header: \usemintedstyle{monokai}
-#+latex_header: \usepackage{tcolorbox}
+#+setupfile: ./setup/setup-file.org
 
 * Ch. 1.1.6
 ** Ex. 1.1
@@ -127,7 +123,6 @@ In the Scheme definition, the top operator of the body is an ~if~ expression tha
 If ~b~ is positive then ~(abs b)~ of ~b~ will be ~b~ and consequently we just need to add that to ~a~ as $a + abs(b) = a + b$ when $b > 0$. We do that by returning ~+~ from the ~if~ expression which is then the operator of the parent expression with ~a~ and ~b~ as operands. On the other hand if ~b~ is negative then ~(abs b)~ will be ~(- b)~ and so we return ~-~ from the inner expression as the operator of the parent expression which is equivalent to the functions definition $a + abs(b)$ or ~(+ a (abs b))~.
 
 The key idea is that the operator of combinations can itself be a compound expression.
-
 
 
 ** Ex. 1.5

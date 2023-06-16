@@ -1,0 +1,14 @@
+#+property: header-args :lang sicp
+#+property: header-args :session *SICP REPL*
+
+* Header
+#+latex_header: \include{./setup/header.sty}
+#+begin_src latex :tangle header.sty
+\usemintedstyle{monokai}
+\usepackage{tcolorbox}
+#+end_src
+
+* Auto tangle on setup file save
+# Local Variables:
+# eval: (add-hook 'after-save-hook #'org-babel-tangle nil 'buffer-local)
+# End:
