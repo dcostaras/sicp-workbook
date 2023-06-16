@@ -1,7 +1,9 @@
 #+title: SICP Workbook
 #+property: header-args :lang sicp
 #+property: header-args :session *SICP REPL*
-#+latex_header: \usepackage{minted}
+
+#+latex_header: \usemintedstyle{monokai}
+#+latex_header: \usepackage{tcolorbox}
 
 * Ch. 1.1.6
 ** Ex. 1.1
