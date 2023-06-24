@@ -1,14 +1,67 @@
 #+property: header-args :lang sicp
 #+property: header-args :session *SICP REPL*
 
-* Header
+* Header :noexport:
+
 #+latex_header: \include{./setup/header.sty}
 #+begin_src latex :tangle header.sty
 \usemintedstyle{monokai}
 \usepackage{tcolorbox}
 #+end_src
 
-* Auto tangle on setup file save
+* Environments :noexport:
+** setup
+
+#+begin_src emacs-lisp
+(setq-local my--org-export-environments (my--org-export-create-environments))
+(setq-local org-babel-exp-code-template (my--org-babel-exp-code-template my--org-export-environments))
+#+end_src
+
+** style :environment:
+*** box
+**** latex
+
+#+begin_src latex :part before
+\begin{box}
+#+end_src
+
+#+begin_src latex :part after
+\end{box}
+#+end_src
+
+**** html
+
+#+begin_src html :part before
+<div class="box">
+#+end_src
+
+#+begin_src html :part after
+</div>
+#+end_src
+
+*** drawer
+**** latex
+
+#+begin_src latex :part before
+\begin{drawer}
+#+end_src
+
+#+begin_src latex :part after
+\end{drawer}
+#+end_src
+
+**** html
+
+#+begin_src html :part before
+<div class="drawer">
+#+end_src
+
+#+begin_src html :part after
+</div>
+#+end_src
+
+* Hooks :noexport:
+
 # Local Variables:
-# eval: (add-hook 'after-save-hook #'org-babel-tangle nil 'buffer-local)
+# eval: (add-hook! 'after-save-hook :local #'org-babel-tangle)
 # End:
